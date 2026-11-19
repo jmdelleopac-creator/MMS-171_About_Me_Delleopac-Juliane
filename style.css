@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;   /* stops the fixed nav from covering section titles */
+}
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ffd400;
+  background-color: #000000;
+  margin: 0;
+  padding: 5.5rem 1.5rem 1.5rem;   /* top padding = room for the fixed nav */
+}
+
+/* Headings */
+h1,
+h2,
+.logo {
+  font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+  font-weight: 400;                /* Anton has one weight; avoids fake bold */
+}
+
+h1 {
+  font-size: 2.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.25rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0;
+}
+
+.tagline {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+/* Fixed navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;                    /* stays above the film strips */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #000000;
+  border-bottom: 2px solid #ffd400;
+}
+
+.logo {
+  color: #ffd400;
+  font-size: 1.25rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: block;
+  padding: 0.4rem 0.9rem;
+  color: #ffd400;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 2px solid #ffd400;
+}
+
+.nav-item:hover,
+.nav-item:focus-visible {
+  background-color: #ffd400;
+  color: #000000;
+}
+
+/* Film strip sections */
+main section {
+  position: relative;
+  max-width: 50rem;
+  margin: 0 auto 2rem;
+  padding: 3rem 2rem;
+  background-color: #1a1a1a;
+  border-radius: 0.25rem;
+}
+
+/* Sprocket holes */
+main section::before,
+main section::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 0.75rem;
+  background: repeating-linear-gradient(
+    to right,
+    #ffd400 0 0.75rem,
+    transparent 0.75rem 1.5rem
+  );
+}
+
+main section::before { top: 0.75rem; }
+main section::after  { bottom: 0.75rem; }
+
+/* About: photo next to bio */
+.bio {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.bio img {
+  width: 18rem;
+  height: 18rem;
+  max-width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 4px solid #ffd400;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+.bio-text h2 {
+  text-align: left;
+}
+
+/* Passion Projects image */
+.works {
+  display: block;
+  width: 40rem;                    /* was 25rem */
+  max-width: 100%;                 /* never wider than the section on small screens */
+  height: auto;                    /* keeps the image's proportions */
+  margin: 1.5rem auto 0;
+  border: 4px solid #ffd400;
+}
+
+/* Contact: extra height so the link can scroll it up under the nav */
+#contact {
+  min-height: 60vh;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+a {
+  color: #ffd400;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  html {
+    scroll-padding-top: 9.5rem;
+  }
+
+  body {
+    padding-top: 9.5rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.625rem;
+  }
+
+  .navbar {
+    flex-direction: column;       /* logo on top, links underneath */
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;              /* four links can wrap to a second row */
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .nav-item {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .bio {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bio img {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .bio-text h2 {
+    text-align: center;
+  }
+}
